@@ -8,29 +8,29 @@ function Header() {
             <div className="container">
                 <div className="row">
                     <div className="col-lg-4 col-6">
-                        <NavLink to="#" className="logo">
+                        <NavLink to="/" className="logo">
                             <img src={logo} alt="logo" />
                         </NavLink>
                     </div>
                     <div className="col-lg-4 d-lg-flex d-none">
                         <ul className="navbar-nav flex-lg-row flex-column">
                             <li className="nav-item me-5">
-                                <NavLink to="#" className="nav-link">
+                                <NavLink to="/" className="nav-link">
                                     Home
                                 </NavLink>
                             </li>
                             <li className="nav-item me-5">
-                                <NavLink to="#" className="nav-link">
+                                <NavLink to="/properties" className="nav-link">
                                     Properties
                                 </NavLink>
                             </li>
                             <li className="nav-item me-5">
-                                <NavLink to="#" className="nav-link">
+                                <NavLink to="/blog" className="nav-link">
                                     Blog
                                 </NavLink>
                             </li>
                             <li className="nav-item me-5">
-                                <NavLink to="#" className="nav-link">
+                                <NavLink to="/contact" className="nav-link">
                                     Contact
                                 </NavLink>
                             </li>
@@ -40,7 +40,7 @@ function Header() {
                         <div className="btns d-lg-flex justify-content-end d-none">
                             <SecondaryBtn to={"/signup"} title="list a property" />
                           
-                            <PrimaryBtn to={"/login"} title="Sign In" />
+                            <PrimaryBtn to={"/login"} customClass={"ms-3"} title="Sign In" />
                         </div>
                         <div
                             className="bars d-lg-none d-flex align-items-center justify-content-center flex-column ms-auto"

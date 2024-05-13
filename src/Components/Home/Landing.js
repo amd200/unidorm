@@ -1,6 +1,7 @@
 import React from "react";
 
 function Landing() {
+
   return (
     <section className="landing py-5">
       <div className="container">
@@ -8,7 +9,7 @@ function Landing() {
           <div className="col-lg-6">
             <div className="text">
               <h1>
-                Discover Your Ideal Student Home With
+              Discover Your Ideal Student Home With 
                 <br />
                 <span className="frist-span">Uni</span>
                 <span className="second-span">Dorm!</span>

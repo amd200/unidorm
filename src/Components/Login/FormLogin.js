@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function FormLogin() {
   return (
-    <form action="" class="bg-white form rounded">
+    <form action="" class="bg-white form rounded p-4 my-5 bg-white">
       <h3 class="mb-4">Sign In</h3>
       <Input type={"text"}  placeholder={"Academic Email"} />
       <Input type={"password"}  placeholder={"Password"} />

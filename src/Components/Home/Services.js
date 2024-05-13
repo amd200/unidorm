@@ -6,7 +6,7 @@ function Services() {
       <div className="container">
         <TitleSection title={"Our Services for you"} />
         <div className="row justify-content-center">
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-md-6">
             <div className="card-servce d-flex align-items-center flex-column justify-content-center text-center rounded">
               <div
                 className="icon d-flex align-items-center justify-content-center"
@@ -24,7 +24,7 @@ function Services() {
               </p>
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-md-6">
             <div className="card-servce d-flex align-items-center flex-column justify-content-center text-center rounded">
               <div
                 className="icon d-flex align-items-center justify-content-center"
@@ -42,7 +42,7 @@ function Services() {
               </p>
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-md-6">
             <div className="card-servce d-flex align-items-center flex-column justify-content-center text-center rounded">
               <div
                 className="icon d-flex align-items-center justify-content-center"
@@ -62,7 +62,7 @@ function Services() {
               </p>
             </div>
           </div>
-          <div className="col-lg-4">
+          <div className="col-lg-4 col-md-6">
             <div className="card-servce d-flex align-items-center flex-column justify-content-center text-center rounded">
               <div
                 className="icon d-flex align-items-center justify-content-center"

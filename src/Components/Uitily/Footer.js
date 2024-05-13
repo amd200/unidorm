@@ -7,14 +7,14 @@ const Footer = () => {
       <div className="container">
         <div className="row">
           <div className="col-lg-3">
-            <div className="list">
-              <NavLink to="/" className="logo">
+            <div className="list mb-4">
+              <NavLink to="/" className="logo ">
                 <img src={logo2} alt="logo" />
               </NavLink>
               {/* <h3 className="mt-4">Subscribe</h3> */}
             </div>
           </div>
-          <div className="col-lg-3">
+          <div className="col-lg-3 col-md-6">
             <div className="list">
               <h3>Support</h3>
               <ul className="list-unstyled">
@@ -36,7 +36,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-2 col-md-3">
             <div className="list">
               <h3>Account</h3>
               <ul className="list-unstyled">
@@ -63,7 +63,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-2 col-md-6">
             <div className="list">
               <h3>About UniDorm</h3>
               <ul className="list-unstyled">
@@ -80,7 +80,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <div className="col-lg-2">
+          <div className="col-lg-2 col-md-3">
             <div className="list">
               <h3>Follow Us</h3>
               <ul className="list-unstyled flex-row d-flex">
