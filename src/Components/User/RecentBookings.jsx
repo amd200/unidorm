@@ -101,10 +101,11 @@ function RecentBookings() {
         <div className="recent-bookings">
             <div className="bg-white">
                 <Tooltip target=".export-buttons>button" position="bottom" />
+                
                 <DataTable selectionMode={null} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} ref={dt} removableSort value={products} header={header} tableStyle={{ minWidth: '50rem' }}>
                     <Column bodyStyle={{ textAlign: 'center' }} selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                     {cols.map((col, index) => (
-                        <Column key={index} bodyStyle={{ textAlign: 'center' }} body={index === 3 ? statusBodyTemplate : null} sortable={col.sortable} field={col.field} header={col.header} />
+                        <Column key={index} bodyStyle={index === 1 ? {width: '10rem'} : { textAlign: 'center',width: '10rem' } } body={index === 3 ? statusBodyTemplate : null} sortable={col.sortable} field={col.field} header={col.header} />
                     ))}
                 </DataTable>
             </div>

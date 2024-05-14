@@ -811,7 +811,8 @@ input[type="checkbox"] {
 .p-datatable .p-datatable-header {
   background-color: transparent !important;
 }
-.p-datatable .p-column-header-content {
+.p-sortable-column:not(:nth-child(3)) .p-column-header-content,
+.p-selection-column .p-column-header-content {
   justify-content: center;
 }
 

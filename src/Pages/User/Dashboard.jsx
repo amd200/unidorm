@@ -9,8 +9,8 @@ import { Button } from 'primereact/button';
 
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
-import RecentRequests from './RecentRequests';
-import RecentBookings from './RecentBookings';
+import RecentRequests from '../../Components/User/RecentRequests';
+import RecentBookings from '../../Components/User/RecentBookings';
 function Dashboard() {
     return (
         <div className="dashboard-page py-5">
