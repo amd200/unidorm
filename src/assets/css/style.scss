@@ -604,7 +604,7 @@ select.form-select {
 }
 .select__control {
   background-color: #f1f3f9 !important;
-  height: 48px !important;
+  min-height: 48px !important;
   box-shadow: none !important;
   border: none !important;
   .css-1p3m7a8-multiValue {
