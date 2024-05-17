@@ -6,15 +6,15 @@ import "./assets/css/style.scss";
 import "./assets/css/normalize.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { PrimeReactProvider } from "primereact/api";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <PrimeReactProvider>
+    <Provider store={store}>
       <App />
-    </PrimeReactProvider>
- 
+    </Provider>
   </React.StrictMode>
 );
 

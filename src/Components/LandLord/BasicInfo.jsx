@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { useEffect, useRef } from 'react'
 import MultiSelect from 'react-select';
-import { Input, Select, TextArea } from '../Ui/Fields';
+import { Input, TextArea } from '../Ui/Fields';
+import $ from "jquery";
+window.jQuery = window.$ = $;
+require("jquery-nice-select");
 function BasicInfo() {
+    const apartmentRef = useRef();
+    const propertyTypeRef = useRef();
+    useEffect(() => {
+        $(apartmentRef.current).niceSelect();
+        $(propertyTypeRef.current).niceSelect();
+    }, []);
     const amenitiesOptions = [
         { value: 'Air Conditioning', label: 'Air Conditioning', },
         { value: 'Electricity', label: 'Electricity' },
@@ -20,13 +29,17 @@ function BasicInfo() {
                     <TextArea placeholder={"Duis ac augue ut lectus congue luctus. Vivamus eu lacus vestibulum, luctus ante dignissim, interdum | "} />
                 </div>
                 <div className="col-lg-6">
-                    <Select options={[{ value: "-- Apartment --", label: "Apartment" }]} />
+                    <select ref={apartmentRef} className='wide' name="" id="">
+                        <option value="-- Apartment --">-- Apartment --</option>
+                    </select>
                 </div>
                 <div className="col-lg-6">
                     <Input type={"number"} placeholder="Size m&sup2;" />
                 </div>
                 <div className="col-lg-6">
-                    <Select options={[{ value: "-- Property Type -- ", label: "-- Property Type --" }]} />
+                    <select className='wide' name="" ref={propertyTypeRef} id="">
+                        <option value="-- Property Type --">-- Property Type --</option>
+                    </select>
                 </div>
                 <div className="col-lg-6">
                     <Input type={"number"} placeholder={"Bed Numbers"} />

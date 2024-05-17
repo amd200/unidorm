@@ -2,6 +2,9 @@
 
 # dependencies
 /node_modules
+/src/redux
+/src/hooks
+/src/hook
 /.pnp
 .pnp.js
 

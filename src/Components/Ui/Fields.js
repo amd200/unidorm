@@ -24,7 +24,7 @@ export function Input({
   );
 }
 
-export function TextArea({ customClass, placeholder,row }) {
+export function TextArea({ customClass, placeholder, row }) {
   return (
     <textarea
       placeholder={placeholder}
@@ -34,7 +34,8 @@ export function TextArea({ customClass, placeholder,row }) {
   );
 }
 
-export function Select({ options, customClass }) {
+export function Select({ options, customClass, children }) {
+  console.log(children.props.children);
   return (
     <select
       className={`form-select mb-4 input-form ${

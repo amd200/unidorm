@@ -7,7 +7,7 @@ import Inforamtion from "../../Components/DetailsProperties/Inforamtion";
 
 
 
-function DetailsProperties() {
+function DetailsPropertiesPage() {
   return (
     <div className="detailsProperties-page">
       <div className="container">
@@ -21,4 +21,4 @@ function DetailsProperties() {
   );
 }
 
-export default DetailsProperties;
+export default DetailsPropertiesPage;

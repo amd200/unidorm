@@ -7,7 +7,7 @@ import AddImgsProperties from '../../Components/LandLord/AddImgsProperties'
 import Facilities from '../../Components/LandLord/Facilities'
 
 
-function AddProperties() {
+function LandLordAddPropertiesPage() {
 
     return (
         <div className="addProperties-page">
@@ -23,4 +23,4 @@ function AddProperties() {
     )
 }
 
-export default AddProperties
+export default LandLordAddPropertiesPage

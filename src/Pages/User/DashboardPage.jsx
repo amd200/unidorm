@@ -1,17 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import { ProductService } from './service/ProductService';
+import React from 'react';
 import MenuProfile from '../../Components/User/MenuProfile'
-import { Tag } from 'primereact/tag';
-import { Tooltip } from 'primereact/tooltip';
-import { Button } from 'primereact/button';
-
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import RecentRequests from '../../Components/User/RecentRequests';
 import RecentBookings from '../../Components/User/RecentBookings';
-function Dashboard() {
+function DashboardPage() {
     return (
         <div className="dashboard-page py-5">
             <div className="container">
@@ -29,4 +22,4 @@ function Dashboard() {
     )
 }
 
-export default Dashboard
+export default DashboardPage

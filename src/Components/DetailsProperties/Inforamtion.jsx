@@ -27,10 +27,15 @@ import {
 import { Rating } from "react-simple-star-rating";
 import Badges from "./Badges";
 import Modal from "../Uitily/Modal";
-import { Input, Select } from "../Ui/Fields";
-
+import { Input } from "../Ui/Fields";
+import $ from "jquery";
+window.jQuery = window.$ = $;
+require("jquery-nice-select");
 function Inforamtion() {
-  const [activeOverlay, setActiveOverlay] = useState(false);
+  const monthRef = useRef();
+  useEffect(() => {
+    $(monthRef.current).niceSelect();
+  }, []);
   const [isActive, setIsActive] = useState(false);
   const shareRef = useRef(null);
   const shareUrl = "https://www.facebook.com/ahmed.elhosseni.71";
@@ -60,63 +65,63 @@ function Inforamtion() {
 
   return (
     <section className="information mb-4 ">
-      
+
       <div className="row">
         <div className="col-lg-8 border-end position-relative">
-        <div className={`toggle-shareButton ${isActive ? "active" : ""}`}>
-          <div
-            className="shareButton"
-            onClick={handleShareButtonClick}
-            ref={shareRef}
-          >
-            <CiShare2 />
+          <div className={`toggle-shareButton ${isActive ? "active" : ""}`}>
+            <div
+              className="shareButton"
+              onClick={handleShareButtonClick}
+              ref={shareRef}
+            >
+              <CiShare2 />
+            </div>
+            <nav>
+              <li style={{ "--i": 1, "--clr": "#3b5998" }}>
+                <FacebookShareButton url={shareUrl}>
+                  <FaFacebook />
+                </FacebookShareButton>
+              </li>
+              <li style={{ "--i": 2, "--clr": "#25d366" }}>
+                <WhatsappShareButton url={shareUrl}>
+                  <FaWhatsapp size={32} />
+                </WhatsappShareButton>
+              </li>
+              <li style={{ "--i": 3, "--clr": "#000" }}>
+                <TwitterShareButton url={shareUrl}>
+                  <FaXTwitter />
+                </TwitterShareButton>
+              </li>
+              <li style={{ "--i": 4, "--clr": "#c71610" }}>
+                <EmailShareButton url={shareUrl}>
+                  <SiGmail />
+                </EmailShareButton>
+              </li>
+              <li style={{ "--i": 5, "--clr": "#0a66c2" }}>
+                <LinkedinShareButton url={shareUrl}>
+                  <FaLinkedin />
+                </LinkedinShareButton>
+              </li>
+              <li style={{ "--i": 6, "--clr": "#00B2FF" }}>
+                <FacebookMessengerShareButton
+                  appId="342417145325054"
+                  url={shareUrl}
+                >
+                  <FaFacebookMessenger />
+                </FacebookMessengerShareButton>
+              </li>
+              <li style={{ "--i": 7, "--clr": "#bd081c" }}>
+                <PinterestShareButton url={shareUrl} media={shareUrl}>
+                  <FaPinterest />
+                </PinterestShareButton>
+              </li>
+              <li style={{ "--i": 8, "--clr": "#229ED9" }}>
+                <TelegramShareButton url={shareUrl}>
+                  <FaTelegramPlane />
+                </TelegramShareButton>
+              </li>
+            </nav>
           </div>
-          <nav>
-            <li style={{ "--i": 1, "--clr": "#3b5998" }}>
-              <FacebookShareButton url={shareUrl}>
-                <FaFacebook />
-              </FacebookShareButton>
-            </li>
-            <li style={{ "--i": 2, "--clr": "#25d366" }}>
-              <WhatsappShareButton url={shareUrl}>
-                <FaWhatsapp size={32} />
-              </WhatsappShareButton>
-            </li>
-            <li style={{ "--i": 3, "--clr": "#000" }}>
-              <TwitterShareButton url={shareUrl}>
-                <FaXTwitter />
-              </TwitterShareButton>
-            </li>
-            <li style={{ "--i": 4, "--clr": "#c71610" }}>
-              <EmailShareButton url={shareUrl}>
-                <SiGmail />
-              </EmailShareButton>
-            </li>
-            <li style={{ "--i": 5, "--clr": "#0a66c2" }}>
-              <LinkedinShareButton url={shareUrl}>
-                <FaLinkedin />
-              </LinkedinShareButton>
-            </li>
-            <li style={{ "--i": 6, "--clr": "#00B2FF" }}>
-              <FacebookMessengerShareButton
-                appId="342417145325054"
-                url={shareUrl}
-              >
-                <FaFacebookMessenger />
-              </FacebookMessengerShareButton>
-            </li>
-            <li style={{ "--i": 7, "--clr": "#bd081c" }}>
-              <PinterestShareButton url={shareUrl} media={shareUrl}>
-                <FaPinterest />
-              </PinterestShareButton>
-            </li>
-            <li style={{ "--i": 8, "--clr": "#229ED9" }}>
-              <TelegramShareButton url={shareUrl}>
-                <FaTelegramPlane />
-              </TelegramShareButton>
-            </li>
-          </nav>
-        </div>
           <h3 className="mb-2">Cairo, Ain Shams near universities</h3>
           <div className="mb-3">
             <Rating
@@ -181,7 +186,7 @@ function Inforamtion() {
           <div class="modal-content">
             <div class="modal-header border-0 d-flex justify-content-center">
               <h5 class="modal-title" id="staticBackdropLabel">Request a tour </h5>
-              <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal"  aria-label="Close"></button>
+              <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <form action="">
@@ -199,24 +204,21 @@ function Inforamtion() {
                     <Input type={"text"} placeholder={"lease Date"} />
                   </div>
                   <div className="col-lg-2">
-                    <Select
-                      options={[
-                        { value: "Month", label: "-- Month --" },
-                        { value: "January", label: "January" },
-                        { value: "February", label: "February" },
-                        { value: "March", label: "March" },
-                        { value: "April", label: "April" },
-                        { value: "May", label: "May" },
-                        { value: "June", label: "June" },
-                        { value: "July", label: "July" },
-                        { value: "August", label: "August" },
-                        { value: "September", label: "September" },
-                        { value: "October", label: "October" },
-                        { value: "November", label: "November" },
-                        { value: "December", label: "December" }
-                      ]}
-                    />
-
+                    <select name="" ref={monthRef} className='wide' id="">
+                      <option value="Month">Month</option>
+                      <option value="January">January</option>
+                      <option value="February">February</option>
+                      <option value="March">March</option>
+                      <option value="April">April</option>
+                      <option value="May">May</option>
+                      <option value="June">June</option>
+                      <option value="July">July</option>
+                      <option value="August">August</option>
+                      <option value="September">September</option>
+                      <option value="October">October</option>
+                      <option value="November">November</option>
+                      <option value="December">December</option>
+                    </select>
                   </div>
                   <div className="col-lg-4">
                     <Input type={"date"} placeholder={"Date"} />

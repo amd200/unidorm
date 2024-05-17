@@ -6,14 +6,23 @@ import MenuProfile from '../../Components/User/MenuProfile'
 import { Tag } from 'primereact/tag';
 import { Tooltip } from 'primereact/tooltip';
 import { Button } from 'primereact/button';
-
+import { FilterMatchMode, FilterOperator } from 'primereact/api';
+import { InputText } from 'primereact/inputtext';
+import { IconField } from 'primereact/iconfield';
+import { InputIcon } from 'primereact/inputicon';
 import 'primeicons/primeicons.css';
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 function RecentBookings() {
     const [products, setProducts] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState(null);
     const dt = useRef(null);
-
+    const [filters, setFilters] = useState({
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+        // code: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        // name: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        // category: { operator: FilterOperator.AND, constraints: [{ value: null, matchMode: FilterMatchMode.STARTS_WITH }] },
+        // inventoryStatus: { operator: FilterOperator.OR, constraints: [{ value: null, matchMode: FilterMatchMode.EQUALS }] }
+    });
 
     const cols = [
         { field: 'code', header: 'Landlord Name', sortable: true },
@@ -86,26 +95,45 @@ function RecentBookings() {
             }
         });
     };
-   
-    const header = (
-        <div className="d-flex align-items-center justify-content-between flex-wrap ">
-            <h3 className='name-table'>Recent Bookings</h3>
-            <div className='d-flex align-items-center gap-2'>
-                <Button type="button" icon="pi pi-file" rounded onClick={() => exportCSV(false)} data-pr-tooltip="CSV" />
-                <Button type="button" icon="pi pi-file-excel" severity="success" rounded onClick={exportExcel} data-pr-tooltip="XLS" />
-                <Button type="button" icon="pi pi-file-pdf" severity="warning" rounded onClick={exportPdf} data-pr-tooltip="PDF" />
+
+    const renderHeader = () => {
+        const value = filters['global'] ? filters['global'].value : '';
+
+        return (
+
+            <div className="d-flex align-items-center justify-content-between flex-wrap ">
+                <h3 className='name-table mb-0'>Recent Bookings</h3>
+                {/* <div className='d-flex align-items-center gap-2'>
+                        <Button type="button" icon="pi pi-file" rounded onClick={() => exportCSV(false)} data-pr-tooltip="CSV" />
+                        <Button type="button" icon="pi pi-file-excel" severity="success" rounded onClick={exportExcel} data-pr-tooltip="XLS" />
+                        <Button type="button" icon="pi pi-file-pdf" severity="warning" rounded onClick={exportPdf} data-pr-tooltip="PDF" />
+                    </div> */}
+                <IconField iconPosition="left">
+                    <InputIcon className="pi pi-search" />
+                    <InputText type="search" value={value || ''} onChange={(e) => onGlobalFilterChange(e)} placeholder="Global Search" />
+                </IconField>
             </div>
-        </div>
-    );
+        );
+    };
+    const header = renderHeader();
+    const onGlobalFilterChange = (event) => {
+        const value = event.target.value;
+        let _filters = { ...filters };
+
+        _filters['global'].value = value;
+
+        setFilters(_filters);
+    };
+
     return (
         <div className="recent-bookings">
             <div className="bg-white">
                 <Tooltip target=".export-buttons>button" position="bottom" />
-                
-                <DataTable selectionMode={null} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} ref={dt} removableSort value={products} header={header} tableStyle={{ minWidth: '50rem' }}>
-                    <Column bodyStyle={{ textAlign: 'center' }} selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
+
+                <DataTable tableStyle={{ minWidth: '50rem' }} filters={filters} onFilter={(e) => setFilters(e.filters)} selectionMode={null} selection={selectedProducts} onSelectionChange={(e) => setSelectedProducts(e.value)} dataKey="id" paginator rows={10} rowsPerPageOptions={[5, 10, 25, 50]} ref={dt} removableSort value={products} header={header} >
+                    <Column style={{ textAlign: 'center' }} selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
                     {cols.map((col, index) => (
-                        <Column key={index} bodyStyle={index === 1 ? {width: '10rem'} : { textAlign: 'center',width: '10rem' } } body={index === 3 ? statusBodyTemplate : null} sortable={col.sortable} field={col.field} header={col.header} />
+                        <Column key={index} style={{ width: '5rem' ,textAlign:"center"}} body={index === 3 ? statusBodyTemplate : null} sortable={col.sortable} field={col.field} header={col.header} />
                     ))}
                 </DataTable>
             </div>

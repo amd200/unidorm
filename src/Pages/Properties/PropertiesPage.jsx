@@ -12,8 +12,18 @@ window.jQuery = window.$ = $;
 require("jquery-nice-select");
 
 function PropertiesPage() {
-  const {cardRectangle ,setCardRectangle } = useState(true)
+  const { cardRectangle, setCardRectangle } = useState(true)
+  const [modeList, setModeList] = useState(false)
 
+  const handleModeList = () => {
+    if (window.innerWidth < 766) {
+      setModeList(false)
+    }
+    else {
+      setModeList(!modeList)
+
+    }
+  }
   const selectRef = useRef();
 
   useEffect(() => {
@@ -32,38 +42,25 @@ function PropertiesPage() {
               <div className="row align-items-end mb-3 px-lg-0 px-4">
                 <div className="col-lg-2 col-5">
                   <div className="sort d-flex   flex-column ">
-                  <label className="me-2" style={{fontSize:"12px",width:"100px"}}>Sort by:</label>
-                  <select ref={selectRef} className="wide" >
-                    <option value="italy">Italy</option>
-                    <option value="spain">Spain</option>
-                    <option value="france">France</option>
-                    <option value="brazil">Brazil</option>
-                  </select>
+                    <label className="me-2" style={{ fontSize: "12px", width: "100px" }}>Sort by:</label>
+                    <select ref={selectRef} className="wide" >
+                      <option value="italy">Italy</option>
+                      <option value="spain">Spain</option>
+                      <option value="france">France</option>
+                      <option value="brazil">Brazil</option>
+                    </select>
                   </div>
                 </div>
                 <div className="col-lg-2 col-5">
-                  <PrimaryBtn title={"List"} icon={<AiOutlineBars className="me-2" />} customClass={"flex-row-reverse"}  />
+                  <PrimaryBtn onClick={handleModeList} title={"List"} icon={<AiOutlineBars className="me-2" />} customClass={"flex-row-reverse"} />
                 </div>
               </div>
               <div className="row">
-                <div className="col-lg-4 col-md-6">
-                  <Card   />
+                <div className={`${modeList ? "col-lg-12" : "col-lg-4 col-md-6"}`}>
+                  <Card modeList={modeList} />
                 </div>
-                <div className="col-lg-4 col-md-6">
-                  <Card  />
-                </div>
-                <div className="col-lg-4 col-md-6">
-                  <Card  />
-                </div>
-                <div className="col-lg-4 col-md-6">
-                  <Card  />
-                </div>
-                <div className="col-lg-4 col-md-6">
-                  <Card  />
-                </div>
-                <div className="col-lg-4 col-md-6">
-                  <Card  />
-                </div>
+
+
               </div>
             </div>
             <Stack spacing={2} className="d-flex  align-items-center mt-5">

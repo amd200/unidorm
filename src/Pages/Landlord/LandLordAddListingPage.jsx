@@ -7,7 +7,7 @@ import Location from '../../Components/LandLord/Location'
 import Pricing from '../../Components/LandLord/Pricing'
 import Facilities from '../../Components/LandLord/Facilities'
 
-function AddListing() {
+function LandLordAddListingPage() {
     return (
         <div className='addListing-page'>
             <div className="container">
@@ -29,4 +29,4 @@ function AddListing() {
     )
 }
 
-export default AddListing
+export default LandLordAddListingPage

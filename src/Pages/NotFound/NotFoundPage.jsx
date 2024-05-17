@@ -3,7 +3,7 @@ import notFound from "../../assets/imgs/404.svg";
 import { PrimaryBtn } from "../../Components/Ui/Buttons";
 import { FaArrowRight } from "react-icons/fa";
 
-function NotFound() {
+function NotFoundPage() {
   return (
     <div className="notFound-page py-5">
       <div className="container d-flex justify-content-center text-center flex-column align-items-center">
@@ -19,4 +19,4 @@ function NotFound() {
   );
 }
 
-export default NotFound;
+export default NotFoundPage;
