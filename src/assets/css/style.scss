@@ -495,7 +495,45 @@ input[type="file"] {
   width: 394px;
   height: 303px;
 }
-
+input.form-control:not([type="checkbox"]),
+select.form-select {
+  background-color: #f1f3f9 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 12px 16px !important;
+  color: var(--Black-2, #abafb1);
+}
+.select__control {
+  background-color: #f1f3f9 !important;
+  height: 48px !important;
+  box-shadow: none !important;
+  border: none !important;
+  .css-1p3m7a8-multiValue {
+    background-color: #fff;
+    .css-wsp0cs-MultiValueGeneric {
+      font-family: "Roboto", sans-serif !important;
+      font-weight: 600;
+    }
+  }
+}
+textarea {
+  background-color: #f1f3f9 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  outline: none !important;
+  padding: 12px 16px !important;
+  color: var(--Black-2, #abafb1);
+}
+input {
+  box-shadow: none !important;
+}
+input[type="checkbox"] {
+  &:checked {
+    background-color: var(--Primary-100);
+  }
+  border-color: var(--Primary-100);
+}
 .detailsProperties-page {
   .information {
     h3 {
