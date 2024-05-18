@@ -18,19 +18,16 @@ const AddVideosProperties = () => {
   const handleVideoChange = (e) => {
     const fileList = e.target.files;
     const newVideos = [];
+
     for (let i = 0; i < fileList.length; i++) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        const videoDataUrl = event.target.result;
-        newVideos.push(videoDataUrl);
-        if (i === fileList.length - 1) {
-          setVideos([...videos, ...newVideos]);
-          setAdditionalDivVisible(false);
-        }
-      };
-      reader.readAsDataURL(fileList[i]);
+      const videoUrl = URL.createObjectURL(fileList[i]);
+      newVideos.push(videoUrl);
     }
+
+    setVideos((prevVideos) => [...prevVideos, ...newVideos]);
+    setAdditionalDivVisible(false);
   };
+
 
   return (
     <section className="addImgsProperties mb-4">
