@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/imgs/logo.svg";
 import { PrimaryBtn, SecondaryBtn } from "../Ui/Buttons";
-import notify from "../../hook/useNotifaction";
 function Header() {
   const [user, setUser] = useState("");
   useEffect(() => {
