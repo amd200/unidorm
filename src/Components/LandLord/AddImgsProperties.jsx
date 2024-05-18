@@ -9,16 +9,10 @@ function AddImgsProperties() {
     const fileList = e.target.files;
     const newImages = [];
     for (let i = 0; i < fileList.length; i++) {
-      const reader = new FileReader();
-      reader.onload = function (event) {
-        const imageDataUrl = event.target.result;
-        newImages.push(imageDataUrl);
-        if (i === fileList.length - 1) {
-          setImages([...images, ...newImages]);
-          setAdditionalDivVisible(false);
-        }
-      };
-      reader.readAsDataURL(fileList[i]);
+      const imgUrl = URL.createObjectURL(fileList[i]);
+      newImages.push(imgUrl);
+      setImages((prevImages) => [...prevImages, ...newImages]);
+
     }
   };
 
