@@ -10,7 +10,6 @@ function Header() {
   }, []);
   const logOut = () => {
     localStorage.removeItem("user");
-    notify("Logout successful", "success");
     setUser("");
   };
   return (
