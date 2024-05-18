@@ -1,6 +1,5 @@
 import React from "react";
 import saly2 from "../../assets/imgs/Saly-2.svg";
-import RegisterHook from "../../hook/Auth/RegisterHook";
 import { Input } from "../../Components/Ui/Fields";
 function SignUpPage() {
   // const [
