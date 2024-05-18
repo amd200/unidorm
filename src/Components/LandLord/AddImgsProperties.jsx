@@ -9,11 +9,13 @@ function AddImgsProperties() {
     const fileList = e.target.files;
     const newImages = [];
     for (let i = 0; i < fileList.length; i++) {
+      console.log(fileList.length);
+      console.log(fileList[i]);
       const imgUrl = URL.createObjectURL(fileList[i]);
       newImages.push(imgUrl);
-      setImages((prevImages) => [...prevImages, ...newImages]);
-
     }
+    setImages((prevImages) => [...prevImages, ...newImages]);
+    setAdditionalDivVisible(false);
   };
 
   return (
