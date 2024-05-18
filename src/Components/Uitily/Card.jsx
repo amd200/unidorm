@@ -71,9 +71,9 @@ import bed from "../../assets/imgs/bed.svg";
 import bathroom from "../../assets/imgs/bathroom.svg";
 import size from "../../assets/imgs/size.svg";
 import { FaArrowRight } from "react-icons/fa";
+import { IoMdClose } from "react-icons/io";
 
-function Card({ modeList }) {
-  const [isFavourite, setIsFavourite] = useState(false)
+function Card({ modeList ,closeBtn }) {
   const [data, setCards] = useState([{
     id: 1,
     name: "Cairo, Ain Shams near universities",
@@ -99,6 +99,7 @@ function Card({ modeList }) {
         </div>
 
         <div className={` ${modeList ? 'col-10' : 'col-12'}`}>
+          {closeBtn && <button className="shadow-none btn-close " aria-label="Close"><IoMdClose/></button>}
           <div className={`description position-relative  ${modeList ? 'p-0' : 'p-3'}`}>
             <div className="row align-items-center">
               <div className={`${modeList ? 'col-8' : 'col-12'}`}>
@@ -113,7 +114,6 @@ function Card({ modeList }) {
                     Department .Bills Included
                   </li>
                 </ul>
-
                 <ul className={`list-unstyled flex-row details-room d-flex align-items-center   ${modeList ? 'mb-0 gap-4' : 'border-top justify-content-between'} pt-2 flex-wrap`}>
                   <li className="d-flex align-items-center">
                     <img src={bed} className="me-1" alt="bed" />12 Beds
