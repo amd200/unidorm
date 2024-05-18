@@ -20,6 +20,7 @@ import LandLordProfilePage from "./Pages/Landlord/LandLordProfilePage";
 import UserRequsetsPage from "./Pages/User/UserRequsetsPage";
 import LandLordBookingsPage from "./Pages/Landlord/LandLordBookingsPage";
 import LandLordAddListingPage from "./Pages/Landlord/LandLordAddListingPage";
+import UserWishlistPage from "./Pages/User/UserWishlistPage";
 function App() {
   return (
     <BrowserRouter>
@@ -40,11 +41,12 @@ function App() {
         <Route path="/user/dashboard" element={<DashboardPage />}></Route>
         <Route path="/user/profile" element={<UserProfilePage />}></Route>
         <Route path="/user/requests" element={<UserRequsetsPage />}></Route>
+        <Route path="/user/wishlist" element={<UserWishlistPage />}></Route>
         {/* End User Pages */}
 
         {/* Start Admin Pages */}
+        <Route path="/landlord" element={<LandLordDashboardPage />} ></Route>
         <Route path="/landlord/addlisting" element={<LandLordAddListingPage />}></Route>
-        <Route path="/landlord/dashboard" element={<LandLordDashboardPage />} ></Route>
         <Route path="/landlord/addproperty" element={<LandLordAddPropertiesPage />} ></Route>
         <Route path="/landlord/bookings" element={<LandLordBookingsPage />} ></Route>
         <Route  path="/landlord/profile" element={<LandLordProfilePage />}></Route>
