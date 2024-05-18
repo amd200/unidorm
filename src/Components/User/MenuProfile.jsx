@@ -14,7 +14,7 @@ function MenuProfile() {
         <li className='nav-item mb-2'><NavLink to={"/user/dashboard"} className={"nav-link"}><CiGrid41 className='me-2 fs-4' />Dashboard</NavLink></li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/user/bookings"} className={"nav-link"}><CiViewList className='me-2 fs-4' />Bookings</NavLink></li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/user/requests"} className={"nav-link"}><MdOutlineCompareArrows className='me-2 fs-4' />Requests</NavLink></li>
-        <li className='nav-item mb-2 bg-white'><NavLink to={"wishlistuser"} className={"nav-link"}><CiHeart className='me-2 fs-4' />Wishlist</NavLink></li>
+        <li className='nav-item mb-2 bg-white'><NavLink to={"/user/wishlist"} className={"nav-link"}><CiHeart className='me-2 fs-4' />Wishlist</NavLink></li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/user/profile"} className={"nav-link"}><CiCircleAlert className='me-2 fs-4' />My profile </NavLink></li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/logout"} className={"nav-link"}><CiLogout className='me-2 fs-4' />Log-out</NavLink></li>
       </ul>
