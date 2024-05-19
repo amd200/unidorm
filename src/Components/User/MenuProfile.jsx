@@ -8,6 +8,17 @@ import { CiLogout } from "react-icons/ci";
 import { CiViewList } from "react-icons/ci";
 
 function MenuProfile() {
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    const links = document.querySelectorAll('.dropdown-list .nav-item .nav-link');
+
+    links.forEach(link => {
+      if (link.classList.contains('active')) {
+        setIsActive(true);
+      }
+    });
+  }, []);
   return (
     <div className='menu-profile bg-white rounded bg-white border'>
       <ul className='list-unstyled'>
