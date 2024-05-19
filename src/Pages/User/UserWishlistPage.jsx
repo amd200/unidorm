@@ -8,10 +8,7 @@ function UserWishlistPage() {
      if (window.innerWidth < 766) {
       setModeList(false)
     }
-    else {
-      setModeList(!modeList)
-
-    }
+    
   }, [modeList]);
 
 
