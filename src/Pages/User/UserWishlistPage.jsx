@@ -4,6 +4,15 @@ import Card from '../../Components/Uitily/Card'
 
 function UserWishlistPage() {
     const [modeList, setModeList] = useState(true)
+    useEffect(() => {
+     if (window.innerWidth < 766) {
+      setModeList(false)
+    }
+    else {
+      setModeList(!modeList)
+
+    }
+  }, [modeList]);
 
 
     return (
