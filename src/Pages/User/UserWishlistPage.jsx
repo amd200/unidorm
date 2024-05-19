@@ -9,7 +9,7 @@ function UserWishlistPage() {
       setModeList(false)
     }
     
-  }, [modeList]);
+  }, []);
 
 
     return (
