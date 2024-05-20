@@ -20,11 +20,13 @@ function UserWishlistPage() {
                     </div>
                     <div className="col-lg-10">
                         <h3 className='sub-title'>Wishlist</h3>
-                        {[...Array(4)].map((_, index) => (
-                            <div key={index} className={`${modeList ? "col-lg-12" : "col-lg-4 col-md-6"}`}>
-                                <Card modeList={modeList} closeBtn={true} />
-                            </div>
-                        ))}
+                        <div className="row">
+                            {[...Array(4)].map((_, index) => (
+                                <div key={index} className={`${modeList ? "col-lg-12" : "col-lg-4 col-md-6"}`}>
+                                    <Card modeList={modeList} closeBtn={true} />
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
