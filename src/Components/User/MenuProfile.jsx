@@ -36,7 +36,7 @@ function MenuProfile() {
           </a>
           <ul className={`list-unstyled dropdown-list collapse ${isActive ? "collapsed  show" : ""} `} id="submenu" data-bs-parent="#parentM">
             <li className="nav-item mb-2 bg-white">
-              <NavLink to={"/landlord/addlisting"} className={"nav-link"}>
+              <NavLink to={"/user/addlisting"} className={"nav-link"}>
                 Add Listing
               </NavLink>
             </li>

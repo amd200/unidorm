@@ -8,7 +8,7 @@ import Pricing from "../../Components/LandLord/Pricing";
 import Facilities from "../../Components/LandLord/Facilities";
 import { DangerBtn, PrimaryBtn } from "../../Components/Ui/Buttons";
 
-function LandLordAddListingPage() {
+function UserAddListingPage() {
   return (
     <div className="addListing-page py-3">
       <div className="container">
@@ -35,4 +35,4 @@ function LandLordAddListingPage() {
   );
 }
 
-export default LandLordAddListingPage;
+export default UserAddListingPage;
