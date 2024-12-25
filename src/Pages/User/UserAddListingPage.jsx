@@ -1,5 +1,4 @@
 import React from "react";
-import MenuProfile from "../../Components/LandLord/MenuProfile";
 import AddImgsProperties from "../../Components/LandLord/AddImgsProperties";
 import AddVideosProperties from "../../Components/LandLord/AddVideosProperties ";
 import BasicInfo from "../../Components/LandLord/BasicInfo";
@@ -7,6 +6,7 @@ import Location from "../../Components/LandLord/Location";
 import Pricing from "../../Components/LandLord/Pricing";
 import Facilities from "../../Components/LandLord/Facilities";
 import { DangerBtn, PrimaryBtn } from "../../Components/Ui/Buttons";
+import MenuProfile from "../../Components/User/MenuProfile";
 
 function UserAddListingPage() {
   return (
