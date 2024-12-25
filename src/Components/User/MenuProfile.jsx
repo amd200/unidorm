@@ -24,6 +24,12 @@ function MenuProfile() {
     <div className='menu-profile bg-white rounded bg-white border'>
       <ul className='list-unstyled'>
         <li className='nav-item mb-2'><NavLink to={"/user/dashboard"} className={"nav-link"}><CiGrid41 className='me-2 fs-4' />Dashboard</NavLink></li>
+        <li className={`nav-item   bg-white  `}>
+          <a aria-current="page" href={"#submenu"} data-bs-toggle="collapse" className={`nav-link`}><CiViewList className='me-2 fs-4' />All Listings</a>
+          <ul className={`list-unstyled dropdown-list collapse ${isActive ? 'collapsed  show' : ''} `} id='submenu' data-bs-parent="#parentM">
+            <li className='nav-item mb-2 bg-white'><NavLink to={"/landlord/addlisting"} className={"nav-link"}>Add Listing</NavLink></li>
+          </ul>
+        </li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/user/bookings"} className={"nav-link"}><CiViewList className='me-2 fs-4' />Bookings</NavLink></li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/user/requests"} className={"nav-link"}><MdOutlineCompareArrows className='me-2 fs-4' />Requests</NavLink></li>
         <li className='nav-item mb-2 bg-white'><NavLink to={"/user/wishlist"} className={"nav-link"}><CiHeart className='me-2 fs-4' />Wishlist</NavLink></li>

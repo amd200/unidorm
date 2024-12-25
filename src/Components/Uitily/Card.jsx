@@ -73,23 +73,23 @@ import size from "../../assets/imgs/size.svg";
 import { FaArrowRight } from "react-icons/fa";
 import { IoMdClose } from "react-icons/io";
 
-function Card({ modeList, closeBtn }) {
-  const [data, setCards] = useState([
-    {
-      id: 1,
-      name: "Cairo, Ain Shams near universities",
-      details: [
-        {
-          time: "Full Year",
-          info: "Department .Bills Included",
-          beds: 4,
-          bathroom: 1,
-          size: 23,
-        },
-      ],
-      price: 120,
-    },
-  ]);
+function Card({ modeList }) {
+  const [isFavourite, setIsFavourite] = useState(false)
+  const [data, setCards] = useState([{
+    id: 1,
+    name: "Cairo, Ain Shams near universities",
+    details: [
+      {
+        time: "Full Year",
+        info: "Department .Bills Included",
+        beds: 4,
+        bathroom: 1,
+        size: 23
+      },
+
+    ],
+    price: 120,
+  }])
 
   return (
     <div className={`card card-property mx-auto position-relative ${modeList ? "list  p-4" : ""}`}>
@@ -98,9 +98,8 @@ function Card({ modeList, closeBtn }) {
           <img src={img1} className={`card-img-top img-fluid`} alt="..." />
         </div>
 
-        <div className={` ${modeList ? "col-10" : "col-12"}`}>
-          {closeBtn && <button className="shadow-none btn-close " style={{ filter: "invert(30%) sepia(100%) saturate(1000%) hue-rotate(0deg) brightness(100%) contrast(100%)" }} aria-label="Close"></button>}
-          <div className={`description position-relative  ${modeList ? "p-0" : "p-3"}`}>
+        <div className={` ${modeList ? 'col-10' : 'col-12'}`}>
+          <div className={`description position-relative  ${modeList ? 'p-0' : 'p-3'}`}>
             <div className="row align-items-center">
               <div className={`${modeList ? "col-8" : "col-12"}`}>
                 <h5 className="card-title mb-2">Cairo, Ain Shams near universities</h5>
@@ -114,7 +113,8 @@ function Card({ modeList, closeBtn }) {
                     Department .Bills Included
                   </li>
                 </ul>
-                <ul className={`list-unstyled flex-row details-room d-flex align-items-center   ${modeList ? "mb-0 gap-4" : "border-top justify-content-between"} pt-2 flex-wrap`}>
+
+                <ul className={`list-unstyled flex-row details-room d-flex align-items-center   ${modeList ? 'mb-0 gap-4' : 'border-top justify-content-between'} pt-2 flex-wrap`}>
                   <li className="d-flex align-items-center">
                     <img src={bed} className="me-1" alt="bed" />
                     12 Beds
