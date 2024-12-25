@@ -71,7 +71,6 @@ import bed from "../../assets/imgs/bed.svg";
 import bathroom from "../../assets/imgs/bathroom.svg";
 import size from "../../assets/imgs/size.svg";
 import { FaArrowRight } from "react-icons/fa";
-import { IoMdClose } from "react-icons/io";
 
 function Card({ modeList }) {
   const [isFavourite, setIsFavourite] = useState(false)
