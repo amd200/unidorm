@@ -1,0 +1,12 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 70 258" width="70" height="258">
+	<title>wave-left-svg</title>
+	<style>
+		.s0 { fill: none;stroke: #5570f1;stroke-width: 2 } 
+	</style>
+	<g style="opacity: .7">
+		<path fill-rule="evenodd" class="s0" d="m138.4 255.4l-48-59.4c-19.2-23.8-20.7-58.4-3.6-87.1l59.3-99.4"/>
+		<path fill-rule="evenodd" class="s0" d="m114.6 253.3l-48-59.3c-19.3-23.8-20.7-58.4-3.6-87.1l59.2-99.4"/>
+		<path fill-rule="evenodd" class="s0" d="m90.8 251.3l-48-59.3c-19.3-23.8-20.7-58.4-3.6-87.2l59.2-99.3"/>
+		<path fill-rule="evenodd" class="s0" d="m67 249.3l-48-59.3c-19.3-23.9-20.7-58.5-3.6-87.2l59.2-99.4"/>
+	</g>
+</svg>

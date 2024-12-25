@@ -19,7 +19,7 @@ function UserDashboardPage() {
                 <CardInfo />
               </div>
               <div className="col-lg-6">
-                <CardInfo />
+                {/* <CardInfo /> */}
               </div>
             </div>
             <RecentRequests />

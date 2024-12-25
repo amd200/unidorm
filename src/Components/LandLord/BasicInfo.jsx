@@ -26,7 +26,7 @@ function BasicInfo() {
             <h3 className='mb-3'>Basic Info</h3>
             <div className="row">
                 <div className="col-12">
-                    <TextArea placeholder={"Duis ac augue ut lectus congue luctus. Vivamus eu lacus vestibulum, luctus ante dignissim, interdum | "} />
+                    <TextArea placeholder={"Duis ac augue ut lectus congue luctus. Vivamus eu lacus vestibulum, luctus ante dignissim, interdum | "} customClass={"mb-4"} />
                 </div>
                 <div className="col-lg-6">
                     <select ref={apartmentRef} className='wide' name="" id="">
