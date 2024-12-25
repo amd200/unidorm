@@ -1,7 +1,6 @@
 import React from "react";
 import saly2 from "../../assets/imgs/Saly-2.svg";
 import { NavLink } from "react-router-dom";
-import LoginHook from "../../hook/Auth/LoginHook";
 import { Input } from "../../Components/Ui/Fields";
 function LoginPage() {
   // const [email, password, onChangePassword, onChangeEmail, OnSubmit, isPress] =

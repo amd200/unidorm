@@ -5,7 +5,7 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import RecentRequests from '../../Components/User/RecentRequests';
 import RecentBookings from '../../Components/User/RecentBookings';
 import { SecondaryBtn } from '../../Components/Ui/Buttons';
-import CardInfo from '../../Components/LandLord/CardDetails';
+import CardInfo from '../../Components/Shared/CardInfo';
 function LandLordDashboardPage() {
     return (
         <div className="dashboard-page py-5">

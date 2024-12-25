@@ -262,6 +262,17 @@ body {
   font-style: normal;
   font-weight: 400;
 }
+.btn-danger {
+  background-color: transparent !important;
+  border-radius: 9px;
+  padding: 12px 20px;
+  font-family: "Roboto", sans-serif;
+  color: #ff0404 !important;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  border: 1px solid #ff0404 !important;
+}
 header {
   height: 70px;
   display: flex;
