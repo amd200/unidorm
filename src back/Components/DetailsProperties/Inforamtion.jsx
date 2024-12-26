@@ -14,24 +14,12 @@ import { SiGmail } from "react-icons/si";
 import bed from "../../assets/imgs/bed.svg";
 import bathroom from "../../assets/imgs/bathroom.svg";
 import size from "../../assets/imgs/size.svg";
-import {
-  EmailShareButton,
-  FacebookShareButton,
-  LinkedinShareButton,
-  PinterestShareButton,
-  TelegramShareButton,
-  TwitterShareButton,
-  WhatsappShareButton,
-  FacebookMessengerShareButton,
-} from "react-share";
+import { EmailShareButton, FacebookShareButton, LinkedinShareButton, PinterestShareButton, TelegramShareButton, TwitterShareButton, WhatsappShareButton, FacebookMessengerShareButton } from "react-share";
 import { Rating } from "react-simple-star-rating";
 import Badges from "./Badges";
 import Modal from "../Uitily/Modal";
-import { Input } from "../Ui/Fields";
+import { Input, TextArea } from "../Ui/Fields";
 import $ from "jquery";
-import PropertiesPageHook from "../../hook/Properties/PropertiesPageHook";
-import PropertieDetailsHook from "../../hook/Properties/PropertieDetailsHook";
-import { useParams } from "react-router-dom";
 window.jQuery = window.$ = $;
 require("jquery-nice-select");
 function Inforamtion() {
@@ -65,20 +53,13 @@ function Inforamtion() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-  const { id } = useParams();
 
-  const [propertie, loading] = PropertieDetailsHook(id)
   return (
     <section className="information mb-4 ">
-
       <div className="row">
         <div className="col-lg-8 border-end position-relative">
           <div className={`toggle-shareButton ${isActive ? "active" : ""}`}>
-            <div
-              className="shareButton"
-              onClick={handleShareButtonClick}
-              ref={shareRef}
-            >
+            <div className="shareButton" onClick={handleShareButtonClick} ref={shareRef}>
               <CiShare2 />
             </div>
             <nav>
@@ -92,20 +73,31 @@ function Inforamtion() {
                   <FaWhatsapp size={32} />
                 </WhatsappShareButton>
               </li>
+              <li style={{ "--i": 3, "--clr": "#000" }}>
+                <TwitterShareButton url={shareUrl}>
+                  <FaXTwitter />
+                </TwitterShareButton>
+              </li>
               <li style={{ "--i": 4, "--clr": "#c71610" }}>
                 <EmailShareButton url={shareUrl}>
                   <SiGmail />
                 </EmailShareButton>
               </li>
+              <li style={{ "--i": 5, "--clr": "#0a66c2" }}>
+                <LinkedinShareButton url={shareUrl}>
+                  <FaLinkedin />
+                </LinkedinShareButton>
+              </li>
               <li style={{ "--i": 6, "--clr": "#00B2FF" }}>
-                <FacebookMessengerShareButton
-                  appId="342417145325054"
-                  url={shareUrl}
-                >
+                <FacebookMessengerShareButton appId="342417145325054" url={shareUrl}>
                   <FaFacebookMessenger />
                 </FacebookMessengerShareButton>
               </li>
-          
+              <li style={{ "--i": 7, "--clr": "#bd081c" }}>
+                <PinterestShareButton url={shareUrl} media={shareUrl}>
+                  <FaPinterest />
+                </PinterestShareButton>
+              </li>
               <li style={{ "--i": 8, "--clr": "#229ED9" }}>
                 <TelegramShareButton url={shareUrl}>
                   <FaTelegramPlane />
@@ -113,35 +105,28 @@ function Inforamtion() {
               </li>
             </nav>
           </div>
-          <h3 className="mb-2">{loading === false && propertie && propertie.title}</h3>
+          <h3 className="mb-2">Cairo, Ain Shams near universities</h3>
           <div className="mb-3">
-            <Rating
-              fillColor="#ff8a00"
-              style={{ position: "relative", bottom: "3px" }}
-              onClick={handleRating}
-              size={19}
-              readonly={true}
-              initialValue={5}
-              className="me-2"
-            />
+            <Rating fillColor="#ff8a00" style={{ position: "relative", bottom: "3px" }} onClick={handleRating} size={19} readonly={true} initialValue={5} className="me-2" />
           </div>
           <Badges numBadges={3} customClass={"mb-2"} />
           <ul className="list-unstyled flex-row details-room d-flex align-items-center  pt-2 flex-wrap">
             <li className="d-flex align-items-center me-4 mb-2">
-              <img src={bed} className="me-1" alt="bed" />{loading === false && propertie && propertie.bedrooms} Beds
+              <img src={bed} className="me-1" alt="bed" />4 Beds
             </li>
             <li className="d-flex align-items-center me-4 mb-2">
-              <img src={bathroom} className="me-1" alt="Time Circle" />{loading === false && propertie && propertie.bathrooms} Bathroom
+              <img src={bathroom} className="me-1" alt="Time Circle" />1 Bathroom
             </li>
             <li className="d-flex align-items-center me-4 mb-2">
               <img src={size} className="me-1" alt="fi_info" />
-              {loading === false && propertie && propertie.size} M
+              23 M
             </li>
           </ul>
           <div className="description">
             <h3 className="mb-2">Description</h3>
             <p>
-              {loading === false && propertie && propertie.description}
+              At The Landing, we know luxury is more than the sum of its parts it's about a seamless daily experience that finds you where you are and offers a multitude of possibilities right at your fingertips. A rooftop terrace for sunrise yoga. Co-working spaces to keep you inspired. A resident app that lets you order in, send laundry out, or get your car washed downstairs. Welcoming, inviting, a place to rest and recharge when the day is done, we'll greet you at the door and remind you why
+              you've made this place your own personal retreat.
             </p>
           </div>
           <Modal />
@@ -149,16 +134,10 @@ function Inforamtion() {
         <div className="col-lg-4">
           <div className="d-flex justify-content-center h-100 align-items-center">
             <div className="d-flex align-items-center flex-lg-column justify-content-center  w-100 mt-lg-0 mt-2">
-              <button className="btn btn-primary2 px-lg-5 px-4 mb-lg-3 me-lg-0 me-4" data-bs-toggle="modal"
-                data-bs-target="#requestTour">
+              <button className="btn btn-primary2 px-lg-5 px-4 mb-lg-3 me-lg-0 me-4" data-bs-toggle="modal" data-bs-target="#requestTour">
                 Request a tour
               </button>
-              <button
-                className="btn btn-borderOrange px-lg-5 px-4"
-
-              >
-                Book Now
-              </button>
+              <button className="btn btn-borderOrange px-lg-5 px-4">Book Now</button>
             </div>
           </div>
         </div>
@@ -167,7 +146,9 @@ function Inforamtion() {
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header border-0 d-flex justify-content-center">
-              <h5 class="modal-title" id="staticBackdropLabel">Request a tour </h5>
+              <h5 class="modal-title" id="staticBackdropLabel">
+                Request a tour{" "}
+              </h5>
               <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -186,7 +167,7 @@ function Inforamtion() {
                     <Input type={"text"} placeholder={"lease Date"} />
                   </div>
                   <div className="col-lg-2">
-                    <select name="" ref={monthRef} className='wide' id="">
+                    <select name="" ref={monthRef} className="wide" id="">
                       <option value="Month">Month</option>
                       <option value="January">January</option>
                       <option value="February">February</option>
@@ -202,15 +183,23 @@ function Inforamtion() {
                       <option value="December">December</option>
                     </select>
                   </div>
-                  <div className="col-lg-4">
+                  <div className="col-lg-6">
                     <Input type={"date"} placeholder={"Date"} />
+                  </div>
+                  <div className="col-lg-6">
+                    <Input type={"date"} placeholder={"Date"} />
+                  </div>
+                  <div className="col-12">
+                    <TextArea placeholder={"Message"} />
                   </div>
                 </div>
               </form>
             </div>
             <div class="modal-footer border-0">
               {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-              <button type="button" class="btn btn-primary2 px-5 mx-auto">Send a reqauest</button>
+              <button type="button" class="btn btn-primary2 px-5 mx-auto">
+                Send a reqauest
+              </button>
             </div>
           </div>
         </div>

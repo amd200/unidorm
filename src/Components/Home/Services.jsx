@@ -7,7 +7,7 @@ import { RiCustomerService2Line } from "react-icons/ri";
 
 function Services() {
   return (
-    <section className="services">
+    <section className="services d-lg-block d-none">
       <div className="container">
         <TitleSection title={"Our Services for you"} />
         <div className="row justify-content-center">

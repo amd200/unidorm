@@ -18,9 +18,9 @@ function ContactOwner() {
           <Input type={"number"} placeholder={"Number of rooms "} />
         </div>
         <div className="col-lg-4">
-          <Input type={"text"} placeholder={"lease Date "}   />
+          <Input type={"text"} placeholder={"lease Date "} />
         </div>
-        <div className="col-lg-2">
+        {/* <div className="col-lg-2">
           <Select
             options={[
               {
@@ -29,7 +29,7 @@ function ContactOwner() {
               },
             ]}
           />
-        </div>
+        </div> */}
         <div className="col-12">
           <TextArea placeholder={"Message"} />
         </div>

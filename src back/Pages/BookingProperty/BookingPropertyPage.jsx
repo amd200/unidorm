@@ -1,4 +1,5 @@
 import React from 'react'
+import ContactOwner from '../../Components/BookingProperty/ContactOwner/ContactOwner'
 import Steper from '../../Components/BookingProperty/Steper/Steper'
 
 function BookingPropertyPage() {

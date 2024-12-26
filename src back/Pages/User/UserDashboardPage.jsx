@@ -1,11 +1,10 @@
 import React from "react";
+import MenuProfile from "../../Components/User/MenuProfile";
 import "primeicons/primeicons.css";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import RecentRequests from "../../Components/User/RecentRequests";
 import RecentBookings from "../../Components/User/RecentBookings";
-import { SecondaryBtn } from "../../Components/Ui/Buttons";
-import CardInfo from "../../Components/User/CardInfo";
-import MenuProfile from "../../Components/User/MenuProfile";
+import CardInfo from "../../Components/Shared/CardInfo";
 function UserDashboardPage() {
   return (
     <div className="dashboard-page py-5">
@@ -15,13 +14,12 @@ function UserDashboardPage() {
             <MenuProfile />
           </div>
           <div className="col-lg-10 d-flex flex-column gap-5">
-            <SecondaryBtn customClass={"ms-auto"} title={"Add Listing"} />
             <div className="row">
               <div className="col-lg-6">
                 <CardInfo />
               </div>
               <div className="col-lg-6">
-                <CardInfo />
+                {/* <CardInfo /> */}
               </div>
             </div>
             <RecentRequests />
