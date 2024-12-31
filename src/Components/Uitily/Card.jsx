@@ -72,36 +72,37 @@ import bathroom from "../../assets/imgs/bathroom.svg";
 import size from "../../assets/imgs/size.svg";
 import { FaArrowRight } from "react-icons/fa";
 
-function Card({ modeList }) {
-  const [isFavourite, setIsFavourite] = useState(false)
-  const [data, setCards] = useState([{
-    id: 1,
-    name: "Cairo, Ain Shams near universities",
-    details: [
-      {
-        time: "Full Year",
-        info: "Department .Bills Included",
-        beds: 4,
-        bathroom: 1,
-        size: 23
-      },
-
-    ],
-    price: 120,
-  }])
+function Card({ property, modeList }) {
+  const [isFavourite, setIsFavourite] = useState(false);
+  const [data, setCards] = useState([
+    {
+      id: 1,
+      name: "Cairo, Ain Shams near universities",
+      details: [
+        {
+          time: "Full Year",
+          info: "Department .Bills Included",
+          beds: 4,
+          bathroom: 1,
+          size: 23,
+        },
+      ],
+      price: 120,
+    },
+  ]);
 
   return (
     <div className={`card card-property mx-auto position-relative ${modeList ? "list  p-4" : ""}`}>
       <div className={`row ${modeList ? "align-items-center" : ""}`}>
         <div className={` ${modeList ? "col-2" : "col-12"} `}>
-          <img src={img1} className={`card-img-top img-fluid`} alt="..." />
+          <img style={{ height: modeList ? "" : "200px" }} src={property.media[0] ? property.media[0] : img1} className={`card-img-top img-fluid`} alt="..." loading="lazy" />
         </div>
 
-        <div className={` ${modeList ? 'col-10' : 'col-12'}`}>
-          <div className={`description position-relative  ${modeList ? 'p-0' : 'p-3'}`}>
+        <div className={` ${modeList ? "col-10" : "col-12"}`}>
+          <div className={`description position-relative  ${modeList ? "p-0" : "p-3"}`}>
             <div className="row align-items-center">
               <div className={`${modeList ? "col-8" : "col-12"}`}>
-                <h5 className="card-title mb-2">Cairo, Ain Shams near universities</h5>
+                <h5 className="card-title mb-2">{property.name}</h5>
                 <ul className={`list-unstyled ${modeList ? "d-flex flex-row mb-1  flex-wrap mb-0" : ""}`}>
                   <li className={`d-flex align-items-center ${modeList ? "me-3" : "mb-2"}`}>
                     <img src={timeCirle} className="me-2" alt="Time Circle" />
@@ -113,26 +114,26 @@ function Card({ modeList }) {
                   </li>
                 </ul>
 
-                <ul className={`list-unstyled flex-row details-room d-flex align-items-center   ${modeList ? 'mb-0 gap-4' : 'border-top justify-content-between'} pt-2 flex-wrap`}>
+                <ul className={`list-unstyled flex-row details-room d-flex align-items-center   ${modeList ? "mb-0 gap-4" : "border-top justify-content-between"} pt-2 flex-wrap`}>
                   <li className="d-flex align-items-center">
                     <img src={bed} className="me-1" alt="bed" />
                     12 Beds
                   </li>
                   <li className="d-flex align-items-center">
-                    <img src={bathroom} className="me-1" alt="Time Circle" />3 Bathroom
+                    <img src={bathroom} className="me-1" alt="Time Circle" />
+                    {property.bathroomNumber} Bathroom
                   </li>
                   <li className="d-flex align-items-center">
                     <img src={size} className="me-1" alt="fi_info" />
-                    12M <sup>2</sup>
+                    {property.area}M <sup>2</sup>
                   </li>
                 </ul>
               </div>
               <div className={`d-flex  ${modeList ? "col-4  flex-column align-items-center justify-content-center" : "col-12 align-items-center justify-content-center"} `}>
                 <p className={`price ${modeList ? "position-relative top-0 end-0" : "position-absolute"}`}>
-                  {" "}
-                  <span>$120</span> / month{" "}
+                  <span>${property.price}</span> / month{" "}
                 </p>
-                <PrimaryBtn to={"/detailsproperties"} title="Check" customClass={`  ${modeList ? "px-lg-5 px-md-4" : "w-50"} } `} icon={<FaArrowRight className="ms-3" />} />
+                <PrimaryBtn to={"/detailsproperties/" + property.id} title="Check" customClass={`  ${modeList ? "px-lg-5 px-md-4" : "w-50"} } `} icon={<FaArrowRight className="ms-3" />} />
               </div>
             </div>
           </div>

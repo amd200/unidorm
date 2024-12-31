@@ -1,47 +1,34 @@
-import React, { useState } from 'react';
-import iconImg from '../../assets/imgs/img.svg';
-import iconCamera from '../../assets/imgs/Category-Camera.svg';
+import React, { useState } from "react";
+import iconImg from "../../assets/imgs/img.svg";
+import iconCamera from "../../assets/imgs/Category-Camera.svg";
 
-function AddImgsProperties() {
-  const [images, setImages] = useState([]);
-  const [additionalDivVisible, setAdditionalDivVisible] = useState(true);
-  const handleImageChange = (e) => {
-    const fileList = e.target.files;
-    const newImages = [];
-    for (let i = 0; i < fileList.length; i++) {
-      console.log(fileList.length);
-      console.log(fileList[i]);
-      const imgUrl = URL.createObjectURL(fileList[i]);
-      newImages.push(imgUrl);
-    }
-    setImages((prevImages) => [...prevImages, ...newImages]);
-    setAdditionalDivVisible(false);
-  };
-
+function AddImgsProperties({additionalDivImagesVisible,handleImageChange,images}) {
   return (
     <section className="addImgsProperties mb-4">
-      <h3 className='mb-3'>Images</h3>
+      <h3 className="mb-3">Images</h3>
       <div className="row">
-        <div className={`col-lg-3 ${additionalDivVisible ? '' : 'order-last'} `}>
-          <input type="file" id='addImg' onChange={handleImageChange} multiple accept="image/*" />
-          <label htmlFor="addImg" className='addImgs d-flex justify-content-center align-items-center flex-column mb-lg-0 mb-3'>
-            <img src={iconImg} alt="" className='mb-1' />
-            <span>Add Thumbnail to property <img src={iconCamera} className='ms-1' width={18} height={18} alt="" /></span>
+        <div className={`col-lg-3 ${additionalDivImagesVisible ? "" : "order-last"} `}>
+          <input type="file" id="addImg" onChange={handleImageChange} multiple accept="image/*" />
+          <label htmlFor="addImg" className="addImgs d-flex justify-content-center align-items-center flex-column mb-lg-0 mb-3">
+            <img src={iconImg} alt="" className="mb-1" />
+            <span>
+              Add Thumbnail to property <img src={iconCamera} className="ms-1" width={18} height={18} alt="" />
+            </span>
           </label>
         </div>
-        {additionalDivVisible && (
+        {additionalDivImagesVisible && (
           <div className="col-lg-3">
-            <div className="border-img mb-3">
-            </div>
+            <div className="border-img mb-3"></div>
           </div>
         )}
-        {images.map((image, index) => (
-          <div className="col-lg-3">
-            <div className="border-img mb-3">
-              <img key={index} src={image} alt={`Thumbnail ${index}`} />
+        {images &&
+          images.map((image, index) => (
+            <div className="col-lg-3" key={index}>
+              <div className="border-img mb-3">
+                <img src={image} alt={`Thumbnail ${index}`} />
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </section>
   );

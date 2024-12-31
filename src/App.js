@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import Header from "./Components/Uitily/Header";
 import HomePage from "./Pages/Home/HomePage";
 import Footer from "./Components/Uitily/Footer";
@@ -19,18 +19,23 @@ import UserWishlistPage from "./Pages/User/UserWishlistPage";
 import UserDashboardPage from "./Pages/User/UserDashboardPage";
 import UserBookingsPage from "./Pages/User/UserBookingsPage";
 import UserAddListingPage from "./Pages/User/UserAddListingPage";
+import { ToastContainer } from "react-toastify";
+import VertifyEmailPage from "./Pages/Auth/VerifyEmailPage";
+import ScrollToTop from "./Components/Uitily/ScrollToTop";
 function App() {
   return (
     <BrowserRouter>
       <Header />
+      <ToastContainer />
       <Routes>
         {/* Public Pages */}
         <Route path="/" element={<HomePage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/signup" element={<SignUpPage />}></Route>
+        <Route path="/verify-email" element={<VertifyEmailPage />}></Route>
         <Route path="/properties" element={<PropertiesPage />}></Route>
         <Route path="/bookingproperty" element={<BookingPropertyPage />}></Route>
-        <Route path="/detailsproperties" element={<DetailsPropertiesPage />}></Route>
+        <Route path="/detailsproperties/:id" element={<DetailsPropertiesPage />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
         {/* End Public Pages */}
 

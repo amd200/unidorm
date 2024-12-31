@@ -1,20 +1,21 @@
-import React, { Suspense } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import "bootstrap/dist/js/bootstrap.bundle";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./assets/css/style.scss";
-import "./assets/css/normalize.css";
+import "bootstrap/dist/css/bootstrap.min.css"; // استيراد CSS
+import "bootstrap/dist/js/bootstrap.bundle.min.js"; // استيراد JavaScript
+import "bootstrap/dist/js/bootstrap.min.js"; // استيراد JavaScript
+import "./assets/css/style.scss"; // ملف الـ SCSS الخاص بك
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-
+import { Provider } from "react-redux";
+import store from "./redux/store/store";
+import { UserContextProvider } from "./context/useContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <React.StrictMode>
+  <Provider store={store}>
+    <UserContextProvider>
       <App />
-  </React.StrictMode>
+    </UserContextProvider>
+  </Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

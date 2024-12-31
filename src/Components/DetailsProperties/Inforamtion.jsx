@@ -20,9 +20,15 @@ import Badges from "./Badges";
 import Modal from "../Uitily/Modal";
 import { Input, TextArea } from "../Ui/Fields";
 import $ from "jquery";
+import notify from "../../hook/useNotifaction";
+import { create } from "@mui/material/styles/createTransitions";
+import { createTour } from "../../redux/actions/tourAction";
+import { useDispatch, useSelector } from "react-redux";
+import { PrimaryBtn } from "../Ui/Buttons";
+import { checkout, createOrder } from "../../redux/actions/orderAction";
 window.jQuery = window.$ = $;
 require("jquery-nice-select");
-function Inforamtion() {
+function Inforamtion({ property }) {
   const monthRef = useRef();
   useEffect(() => {
     $(monthRef.current).niceSelect();
@@ -40,12 +46,6 @@ function Inforamtion() {
       setIsActive(false);
     }
   };
-  const [rating, setRating] = useState(0);
-
-  // Catch Rating value
-  const handleRating = (rate) => {
-    setRating(rate);
-  };
   useEffect(() => {
     document.addEventListener("click", handleClickOutside);
 
@@ -53,6 +53,54 @@ function Inforamtion() {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+  // -------------------
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [sessions, setSessions] = useState([]);
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.orderReducer.checkout);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await dispatch(createTour({ name, email, phoneNumber: phone, fromDate: startDate, toDate: endDate, message, leaseType: "MONTHLY" }));
+    setLoading(false);
+    setName("");
+    setEmail("");
+    setPhone("");
+    setStartDate("");
+    setEndDate("");
+    setMessage("");
+  };
+
+  const handleCreateOrder = async () => {
+    await dispatch(
+      createOrder({
+        quantity: 1,
+        propertyId: property.id,
+      })
+    );
+    await dispatch(checkout());
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    if (loading === false && data.data.url) {
+      let url = data.data.url;
+      const path = new URL(url).pathname;
+      const sessionId = path.split("/")[3];
+      window.open(url);
+      setSessions((prevSessions) => {
+        const newSessions = [...prevSessions, sessionId];
+        localStorage.setItem("sessions", JSON.stringify(newSessions));
+        return newSessions;
+      });
+    }
+  }, [loading, data]);
 
   return (
     <section className="information mb-4 ">
@@ -105,29 +153,28 @@ function Inforamtion() {
               </li>
             </nav>
           </div>
-          <h3 className="mb-2">Cairo, Ain Shams near universities</h3>
+          <h3 className="mb-2">{property.name}</h3>
           <div className="mb-3">
-            <Rating fillColor="#ff8a00" style={{ position: "relative", bottom: "3px" }} onClick={handleRating} size={19} readonly={true} initialValue={5} className="me-2" />
+            <Rating fillColor="#ff8a00" style={{ position: "relative", bottom: "3px" }} size={19} readonly={true} initialValue={5} className="me-2" />
           </div>
           <Badges numBadges={3} customClass={"mb-2"} />
           <ul className="list-unstyled flex-row details-room d-flex align-items-center  pt-2 flex-wrap">
             <li className="d-flex align-items-center me-4 mb-2">
-              <img src={bed} className="me-1" alt="bed" />4 Beds
+              <img src={bed} className="me-1" alt="bed" />
+              {property.bedroomNumber} Beds
             </li>
             <li className="d-flex align-items-center me-4 mb-2">
-              <img src={bathroom} className="me-1" alt="Time Circle" />1 Bathroom
+              <img src={bathroom} className="me-1" alt="Time Circle" />
+              {property.bathroomNumber} Bathroom
             </li>
             <li className="d-flex align-items-center me-4 mb-2">
               <img src={size} className="me-1" alt="fi_info" />
-              23 M
+              {property.area} M<sup>2</sup>
             </li>
           </ul>
           <div className="description">
             <h3 className="mb-2">Description</h3>
-            <p>
-              At The Landing, we know luxury is more than the sum of its parts it's about a seamless daily experience that finds you where you are and offers a multitude of possibilities right at your fingertips. A rooftop terrace for sunrise yoga. Co-working spaces to keep you inspired. A resident app that lets you order in, send laundry out, or get your car washed downstairs. Welcoming, inviting, a place to rest and recharge when the day is done, we'll greet you at the door and remind you why
-              you've made this place your own personal retreat.
-            </p>
+            <p>{property.description}</p>
           </div>
           <Modal />
         </div>
@@ -137,69 +184,48 @@ function Inforamtion() {
               <button className="btn btn-primary2 px-lg-5 px-4 mb-lg-3 me-lg-0 me-4" data-bs-toggle="modal" data-bs-target="#requestTour">
                 Request a tour
               </button>
-              <button className="btn btn-borderOrange px-lg-5 px-4">Book Now</button>
+              <button className="btn btn-borderOrange px-lg-5 px-4" onClick={handleCreateOrder}>
+                Book Now
+              </button>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal fade" id="requestTour" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header border-0 d-flex justify-content-center">
-              <h5 class="modal-title" id="staticBackdropLabel">
-                Request a tour{" "}
+      <div className="modal fade" id="requestTour" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div className="modal-dialog modal-lg">
+          <div className="modal-content">
+            <div className="modal-header border-0 d-flex justify-content-center">
+              <h5 className="modal-title" id="staticBackdropLabel">
+                Request a tour
               </h5>
-              <button type="button" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button type="button" className="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-              <form action="">
+            <div className="modal-body">
+              <form onSubmit={handleSubmit}>
                 <div className="row">
-                  <div className="col-12">
-                    <Input type={"text"} placeholder={"Name"} />
+                  <div className="col-12 mb-4">
+                    <Input type={"text"} placeholder={"Name"} value={name} onChange={(e) => setName(e.target.value)} />
                   </div>
-                  <div className="col-12">
-                    <Input type={"email"} placeholder={"Email"} />
+                  <div className="col-12 mb-4">
+                    <Input type={"email"} placeholder={"Email"} value={email} onChange={(e) => setEmail(e.target.value)} />
                   </div>
-                  <div className="col-lg-6">
-                    <Input type={"number"} placeholder={"Phone Number"} />
+                  <div className="col-12 mb-4">
+                    <Input type={"number"} placeholder={"Phone Number"} value={phone} onChange={(e) => setPhone(e.target.value)} />
                   </div>
-                  <div className="col-lg-4">
-                    <Input type={"text"} placeholder={"lease Date"} />
+                  <div className="col-lg-6 mb-4">
+                    <Input type={"date"} placeholder={"Date"} value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                   </div>
-                  <div className="col-lg-2">
-                    <select name="" ref={monthRef} className="wide" id="">
-                      <option value="Month">Month</option>
-                      <option value="January">January</option>
-                      <option value="February">February</option>
-                      <option value="March">March</option>
-                      <option value="April">April</option>
-                      <option value="May">May</option>
-                      <option value="June">June</option>
-                      <option value="July">July</option>
-                      <option value="August">August</option>
-                      <option value="September">September</option>
-                      <option value="October">October</option>
-                      <option value="November">November</option>
-                      <option value="December">December</option>
-                    </select>
+                  <div className="col-lg-6 mb-4">
+                    <Input type={"date"} placeholder={"Date"} value={endDate} onChange={(e) => setEndDate(e.target.value)} />
                   </div>
-                  <div className="col-lg-6">
-                    <Input type={"date"} placeholder={"Date"} />
-                  </div>
-                  <div className="col-lg-6">
-                    <Input type={"date"} placeholder={"Date"} />
-                  </div>
-                  <div className="col-12">
-                    <TextArea placeholder={"Message"} />
+                  <div className="col-12 mb-4">
+                    <TextArea placeholder={"Message"} value={message} onChange={(e) => setMessage(e.target.value)} />
                   </div>
                 </div>
+                <div className="modal-footer border-0">
+                  <PrimaryBtn isSubmit={true} customClass={"px-5 mx-auto"} title={"Send a reqauest"} />
+                </div>
               </form>
-            </div>
-            <div class="modal-footer border-0">
-              {/* <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> */}
-              <button type="button" class="btn btn-primary2 px-5 mx-auto">
-                Send a reqauest
-              </button>
             </div>
           </div>
         </div>

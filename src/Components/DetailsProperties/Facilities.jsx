@@ -1,43 +1,18 @@
 import React from "react";
 
-function Facilities() {
+function Facilities({ property }) {
   return (
     <section className="facilities mb-4">
       <h3>Facilities</h3>
       <div className="row">
-        <div className="col-lg-3">
-          <ul className="">
+        <div className="col-lg-4">
+          <ul>
             <div className="row">
-              <div className="col-4">
-                <li className="mb-2">
-                  <span>Bathroom</span>
-                </li>
-              </div>
-              <div className="col-4">
-                <li className="mb-2">
-                  <span>KFC</span>
-                </li>
-              </div>
-              <div className="col-4">
-                <li className="mb-2">
-                  <span>Wifi</span>
-                </li>
-              </div>
-              <div className="col-4">
-                <li className="mb-2">
-                  <span>Holmes</span>
-                </li>
-              </div>
-              <div className="col-4">
-                <li className="mb-2">
-                  <span>Holmes</span>
-                </li>
-              </div>
-              <div className="col-4">
-                <li className="mb-2">
-                  <span>Holmes</span>
-                </li>
-              </div>
+              {property.facilities.map((facility,id) => (
+                <div className="col-lg-4" key={id}>
+                  <li className="mb-2 "><span>{facility}</span></li>
+                </div>
+              ))}
             </div>
           </ul>
         </div>

@@ -11,6 +11,12 @@
   --Black-2: #abafb1;
   --Black-40: #6e7079;
 }
+/* تقليص حجم الصورة عند فتحها في LightGallery */
+.lg-image {
+  max-width: 700px !important;
+  max-height: 1280px !important;
+  margin: 0 auto; /* لضبط الصورة في المنتصف */
+}
 .sub-title {
   color: var(--Primary-100, #5570f1);
   font-family: "Roboto", sans-serif;
@@ -594,6 +600,31 @@ input[type="checkbox"] {
   border-color: var(--Primary-100);
 }
 .detailsProperties-page {
+  .imgs-properties {
+    a.more {
+      position: relative;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      &:nth-child(3):after {
+        content: attr(data-count);
+        position: absolute;
+        top: 0;
+        left: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: calc(100% - 24px);
+        height: 100%;
+        background-color: #3b3b3b7a;
+        font-family: "Roboto", sans-serif;
+        font-size: 2rem;
+        color: #fff;
+      }
+    }
+  }
   .information {
     h3 {
       color: var(--Black-100, #1c1d22);
